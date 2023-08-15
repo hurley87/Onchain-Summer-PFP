@@ -13,11 +13,11 @@ import {
 } from '@rainbow-me/rainbowkit/wallets';
 import { ReactNode } from 'react';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { baseGoerli } from 'wagmi/chains';
+import { baseGoerli, base } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [baseGoerli],
+  [process.env.NEXT_PUBLIC_NODE_ENV === 'dev' ? baseGoerli : base],
   [publicProvider()]
 );
 

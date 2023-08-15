@@ -21,7 +21,7 @@ const Mint = ({ tokenId }: MintProps) => {
   const { image, setImage, gender, status } = useContext(MintContext);
   const [hash, setHash] = useState<`0x${string}`>();
   const { writeAsync: mint } = useContractWrite({
-    address: '0x36B4DF23A749A59649Ec6501210867a8d59552c2',
+    address: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as `0x${string}`,
     abi: OnchainSummerPFP.abi,
     functionName: 'mint',
   });
@@ -63,8 +63,6 @@ const Mint = ({ tokenId }: MintProps) => {
       setIsMinting(false);
     }
   };
-
-  console.log(image);
 
   return hash ? (
     <>

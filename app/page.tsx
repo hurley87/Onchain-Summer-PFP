@@ -3,7 +3,7 @@
 import { useAccount, useContractRead } from 'wagmi';
 import ConnectWallet from '@/components/ConnectWallet';
 import Mint from '@/components/Mint';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import OnchainSummerPFP from '@/lib/OnchainSummerPFP.json';
 import GenerateImage from '@/components/GenerateImage';
 import { MintContext } from '@/components/MintContext';
@@ -13,8 +13,8 @@ export default function Home() {
   const [image, setImage] = useState('/giphy.gif');
   const [gender, setGender] = useState('male');
   const [status, setStatus] = useState('artist');
-  const { data, isError, isLoading } = useContractRead({
-    address: '0x36B4DF23A749A59649Ec6501210867a8d59552c2',
+  const { data } = useContractRead({
+    address: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as `0x${string}`,
     abi: OnchainSummerPFP.abi,
     functionName: 'totalSupply',
     watch: true,
@@ -86,7 +86,7 @@ export default function Home() {
         </a>
         . The source code is available on{' '}
         <a
-          href="https://github.com/hurley87/Onchain-Summer"
+          href="https://github.com/hurley87/Onchain-Summer-PFP"
           target="_blank"
           rel="noreferrer"
           className="font-medium underline underline-offset-4"
