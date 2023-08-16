@@ -38,7 +38,7 @@ const Mint = ({ tokenId }: MintProps) => {
     });
 
     const metadata = await nftStorage.store({
-      name: `Onchain Summer PFP #${tokenId}`,
+      name: `LFTG #${tokenId}`,
       description:
         'Get onchain this summer to join a multi-week celebration of art, culture, gaming, community, and more.',
       image: imageFile,
