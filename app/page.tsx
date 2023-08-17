@@ -36,8 +36,8 @@ export default function Home() {
           />
         </div>
         <div className="flex flex-col w-full gap-2 h-full order-2 md:order-1">
-          <h1 className="text-2xl text-black font-bold tracking-tighter">
-            {`Let's`} F*ckin Thoughtfully Go
+          <h1 className="text-xl text-black font-bold tracking-tighter">
+            {`Let's`} F*ckin Thoughtfully Go Onchain
           </h1>
           <div className="flex items-center mb-2">
             <span className="mr-2 text-slate-500">by</span>
