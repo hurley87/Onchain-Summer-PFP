@@ -59,17 +59,7 @@ const Mint = ({ tokenId }: MintProps) => {
   };
 
   return hash ? (
-    <>
-      <HashButton hash={hash} />
-      <Link
-        target="_blank"
-        href="https://twitter.com/intent/tweet?text=Just%20minted%20my%20%23OnchainSummer%20PFP%20%40buildonbase"
-      >
-        <Button size="lg" variant="outline">
-          Share on Twitter
-        </Button>
-      </Link>
-    </>
+    <HashButton hash={hash} />
   ) : (
     <>
       <Button disabled={isMinting} onClick={handleMint} size="lg">
