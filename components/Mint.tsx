@@ -66,7 +66,7 @@ const Mint = ({ tokenId }: MintProps) => {
         {isMinting ? 'Minting ...' : 'Mint (0.01 ETH) →'}
       </Button>
       <Button
-        onClick={() => setImage('/giphy.gif')}
+        onClick={() => window.location.reload()}
         size="lg"
         variant="outline"
       >
