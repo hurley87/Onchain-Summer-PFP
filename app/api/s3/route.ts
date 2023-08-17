@@ -42,6 +42,8 @@ export async function POST(req: Request) {
     };
     const stored = await s3.upload(params).promise();
 
+    console.log(stored);
+
     return new NextResponse(JSON.stringify({ metadataURL: stored.Location }));
   } catch (error) {
     console.log(error);
