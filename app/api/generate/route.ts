@@ -25,12 +25,12 @@ export async function POST(req: Request) {
     const response = await openai.createImage({
       prompt,
       n: 1,
-      size: '256x256',
+      size: '1024x1024',
     });
     const url: any = response.data.data[0].url as string;
     const imageResponse = await fetch(url);
     const imageData = await imageResponse?.buffer();
-    const Key = 'lftg' + tokenId + '.jpg';
+    const Key = 'OnchainSummerLove' + tokenId + '.jpg';
     const params = {
       Bucket: 'pollock-art',
       Key,

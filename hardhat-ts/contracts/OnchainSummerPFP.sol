@@ -12,7 +12,7 @@ contract OnchainSummerPFP is ERC721URIStorage, Ownable {
 
     uint256 public constant MINT_PRICE = 0.01 ether;
 
-    constructor() ERC721("LFTG", "LFTG") {}
+    constructor() ERC721("OnchainSummerLove", "OSL") {}
 
     function mint(address to, string memory tokenURI) external payable {
         require(msg.value >= MINT_PRICE, "Insufficient Ether sent");
