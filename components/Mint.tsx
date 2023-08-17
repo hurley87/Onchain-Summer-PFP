@@ -30,27 +30,21 @@ const Mint = ({ tokenId }: MintProps) => {
   const handleMint = async () => {
     setIsMinting(true);
 
-    const token = process.env.NEXT_PUBLIC_NFT_STORAGE_KEY as string;
-    const nftStorage = new NFTStorage({ token });
-    const imageBlob = await (await fetch(image)).blob();
-    const imageFile = new File([imageBlob], image.split('/')[3], {
-      type: 'image/jpeg',
+    const response = await fetch('/api/s3', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ tokenId, image, gender, status }),
     });
 
-    const metadata = await nftStorage.store({
-      name: `LFTG #${tokenId}`,
-      description:
-        'Get onchain this summer to join a multi-week celebration of art, culture, gaming, community, and more.',
-      image: imageFile,
-      attributes: [
-        { trait_type: 'Gender', value: gender },
-        { trait_type: 'Status', value: status },
-      ],
-    });
+    console.log(response);
+
+    const { metadataURL } = await response.json();
 
     try {
       const tx = await mint({
-        args: [address, metadata.url],
+        args: [address, metadataURL],
         value: parseEther('0.01'),
       });
       setHash(tx.hash);
