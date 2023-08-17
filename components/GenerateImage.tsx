@@ -6,7 +6,11 @@ import { Button } from './ui/button';
 import { Tabs, TabsList, TabsTrigger } from './ui/tabs';
 import { MintContext } from '@/components/MintContext';
 
-const GenerateImage = () => {
+type GenerateImageProps = {
+  tokenId: string;
+};
+
+const GenerateImage = ({ tokenId }: GenerateImageProps) => {
   const { setImage, gender, setGender, status, setStatus } =
     useContext(MintContext);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -21,10 +25,12 @@ const GenerateImage = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ prompt }),
+      body: JSON.stringify({ prompt, tokenId }),
     });
 
     const { image } = await response.json();
+
+    console.log(image);
 
     setImage(image);
 

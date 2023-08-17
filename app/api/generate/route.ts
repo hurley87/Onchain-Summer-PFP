@@ -18,19 +18,19 @@ export const runtime = 'nodejs';
 
 export async function POST(req: Request) {
   try {
-    const { prompt } = (await req.json()) as {
+    const { prompt, tokenId } = (await req.json()) as {
       prompt: string;
+      tokenId: string;
     };
     const response = await openai.createImage({
       prompt,
       n: 1,
-      size: '1024x1024',
+      size: '512x512',
     });
     const url: any = response.data.data[0].url as string;
     const imageResponse = await fetch(url);
     const imageData = await imageResponse?.buffer();
-    const val = Math.floor(1000000 + Math.random() * 9000000);
-    const Key = 'pollock-art' + val + '.jpg';
+    const Key = 'lftg' + tokenId + '.jpg';
     const params = {
       Bucket: 'pollock-art',
       Key,
