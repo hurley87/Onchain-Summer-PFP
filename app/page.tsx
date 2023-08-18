@@ -28,7 +28,7 @@ export default function Home() {
       <div className="absolute right-2 top-2">
         <ConnectWallet />
       </div>
-      <Link target="_blank" href="opensea.com">
+      <Link target="_blank" href="https://opensea.io/collection/lftg-onchain-1">
         <div className="h-[54px] w-[54px] rounded-full bg-[#FCD22D] shadow-md hover:shadow-2xl transition">
           <SiOpensea className="h-[54px] w-[54px] text-primary" />
         </div>
