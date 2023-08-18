@@ -1,7 +1,6 @@
 'use client';
 
 import { useContext, useState } from 'react';
-import { NFTStorage, File } from 'nft.storage';
 import { useAccount } from 'wagmi';
 import { toast } from '@/components/ui/use-toast';
 import { Button } from './ui/button';
@@ -10,7 +9,6 @@ import OnchainSummerPFP from '@/lib/OnchainSummerPFP.json';
 import { parseEther } from 'ethers';
 import HashButton from './MintingButton';
 import { MintContext } from './MintContext';
-import Link from 'next/link';
 
 type MintProps = {
   tokenId: string;

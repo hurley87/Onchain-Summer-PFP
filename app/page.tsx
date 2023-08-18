@@ -7,6 +7,8 @@ import { useState } from 'react';
 import OnchainSummerPFP from '@/lib/OnchainSummerPFP.json';
 import GenerateImage from '@/components/GenerateImage';
 import { MintContext } from '@/components/MintContext';
+import { SiOpensea } from 'react-icons/si';
+import Link from 'next/link';
 
 export default function Home() {
   const { address } = useAccount();
@@ -26,7 +28,11 @@ export default function Home() {
       <div className="absolute right-2 top-2">
         <ConnectWallet />
       </div>
-      <div className="h-[54px] w-[54px] rounded-full bg-[#FCD22D]"></div>
+      <Link target="_blank" href="opensea.com">
+        <div className="h-[54px] w-[54px] rounded-full bg-[#FCD22D] shadow-md hover:shadow-2xl transition">
+          <SiOpensea className="h-[54px] w-[54px] text-primary" />
+        </div>
+      </Link>
       <section className="my-8 max-w-[900px] grid p-5 md:p-6 rounded-3xl md:rounded-[32px] bg-white shadow-large w-full md:grid-cols-[5fr,7fr] gap-2 md:gap-10">
         <div className="relative w-full mb-1 lg:mb-0 order-1 md:order-2">
           <img
@@ -84,7 +90,7 @@ export default function Home() {
           >
             <div className="flex flex-col w-full gap-2 mt-auto">
               <div className="flex items-center flex-row text-[#0052ff] text-[14px]">
-                {tokenId} minted
+                {tokenId?.replace(/\B(?=(\d{3})+(?!\d))/g, ',') || 0} / 10,000
               </div>
               {!address && <ConnectWallet />}
               {address && image === '/giphy.gif' && tokenId && (
